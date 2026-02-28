@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>Gym Screen</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- main menu used to select which view to show -->
+  <div class="menu" id="menu">
+    <button id="showExercises">תרגילים</button>
+    <button id="showGymMap">מפת חדר כושר</button>
+  </div>
+
+  <!-- exercise carousel + details view (hidden until chosen) -->
+  <div id="exerciseView" class="container hidden">
+    <button class="back-btn" id="backFromExercises">חזרה</button>
+
+    <!-- back carousel button - hidden until a card is clicked -->
+    <button class="back-btn" id="backFromCarousel" style="display: none;">חזרה לכל הקטגוריות</button>
+
+    <!-- 6 category carousels - all shown by default -->
+    <div class="carousel" id="carousel-1" data-category="חזה"></div>
+    <div class="carousel" id="carousel-2" data-category="רגליים"></div>
+    <div class="carousel" id="carousel-3" data-category="גב"></div>
+    <div class="carousel" id="carousel-4" data-category="יד קדמית ואחורית"></div>
+    <div class="carousel" id="carousel-5" data-category="כתפיים"></div>
+    <div class="carousel" id="carousel-6" data-category="בטן"></div>
+
+    <!-- אזור פרטים -->
+    <div class="details">
+      <!-- preview iframe and textual details -->
+      <h2 id="exerciseTitle">בחר תרגיל</h2>
+      <iframe id="exerciseFrame" title="תרגיל - תצוגה מקדימה"></iframe>
+
+      <div class="info-box" aria-labelledby="instructions-heading">
+        <h3 id="instructions-heading">הוראות ביצוע</h3>
+        <div id="exerciseInstructions" class="info-content"></div>
+      </div>
+
+      <div class="info-box" aria-labelledby="mistakes-heading">
+        <h3 id="mistakes-heading">טעויות נפוצות</h3>
+        <div id="exerciseMistakes" class="info-content"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- gym map view (hidden until chosen) -->
+  <div id="mapView" class="container hidden">
+    <button class="back-btn" id="backFromMap">חזרה</button>
+    <!-- replace the src below with the desired map URL / embed code -->
+    <iframe id="gymMapFrame" title="מפת חדר כושר" src="https://my.treedis.com/tour/547d8aec"></iframe>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
