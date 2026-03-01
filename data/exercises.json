@@ -1,98 +1,86 @@
-[
-  {
-    "id": 1,
-    "category": "חזה",
-    "name": "בנץ' פרס",
-    "description": "בנץ' פרס מחזק את שרירי החזה, הכתפיים והיד האחורית. חשוב להוריד את המוט בצורה מבוקרת ולדחוף חזרה תוך שמירה על יציבות השכמות והגב.",
-    "mistakes": "לא להוריד את המוט מהר מדי. לא לגלגל את הגב או להרים את הישבן מהבנץ'.",
-    "link": "https://drive.google.com/file/d/18O6cEA0ZYHgwwwODXSYIz--7ukuau5n2/preview"
-  },
-  {
-    "id": 2,
-    "category": "חזה",
-    "name": "לחיצת דמבל",
-    "description": "תרגיל חזה עם דמבלים. שמור על יציבות הגב והכתפיים.",
-    "mistakes": "לא לרדת יותר מדי עמוק. שמור על יציבות.",
-    "link": "https://drive.google.com/file/d/FILE_ID_1/preview"
-  },
-  {
-    "id": 3,
-    "category": "רגליים",
-    "name": "סקוואט",
-    "description": "רגליים ברוחב כתפיים. גב ישר. ירידה מבוקרת.",
-    "mistakes": "לא להוריד את הישבן מתחת לקו הברכיים. לא לגלגל את הברכיים פנימה.",
-    "link": "https://drive.google.com/file/d/11ZBihF7d4UF-6DtZeeMm2TcvyP5QQL3Q/preview"
-  },
-  {
-    "id": 4,
-    "category": "רגליים",
-    "name": "שכיבות רגליים",
-    "description": "תרגיל למרבצי הרגליים. עמוד ישר.",
-    "mistakes": "לא לכופף את הברכיים יותר מ-90 מעלות.",
-    "link": "https://drive.google.com/file/d/FILE_ID_2/preview"
-  },
-  {
-    "id": 5,
-    "category": "גב",
-    "name": "משיכה",
-    "description": "תרגיל גב עם משיכה אנכית. שמור על גב ישר.",
-    "mistakes": "אל תשנה את עמדת הגב.",
-    "link": "https://drive.google.com/file/d/FILE_ID_3/preview"
-  },
-  {
-    "id": 6,
-    "category": "גב",
-    "name": "הטיות בורציה",
-    "description": "תרגיל גב עם משקולות. התייצבות וגב ישר.",
-    "mistakes": "שמור על גב ישר, אל תכופף.",
-    "link": "https://drive.google.com/file/d/FILE_ID_4/preview"
-  },
-  {
-    "id": 7,
-    "category": "יד קדמית ואחורית",
-    "name": "קול הביצפס",
-    "description": "הרמת דמבל לחיזוק הביצפס. תנועה מנוקבת.",
-    "mistakes": "אל תנדנד את הדמבל. בקרה מלאה בתנועה.",
-    "link": "https://drive.google.com/file/d/FILE_ID_5/preview"
-  },
-  {
-    "id": 8,
-    "category": "יד קדמית ואחורית",
-    "name": "הרחקת טריצפס",
-    "description": "תרגיל לטריצפס. משתרע מלא בחזרה.",
-    "mistakes": "השמור על הזרוע העליונה סטטית.",
-    "link": "https://drive.google.com/file/d/FILE_ID_6/preview"
-  },
-  {
-    "id": 9,
-    "category": "כתפיים",
-    "name": "בנץ' כתפיים",
-    "description": "הרמת משקולות מעל לראש. גב ישר.",
-    "mistakes": "לא להוריד את המשקולות מהר מדי.",
-    "link": "https://drive.google.com/file/d/FILE_ID_7/preview"
-  },
-  {
-    "id": 10,
-    "category": "כתפיים",
-    "name": "הרמות צדדיות",
-    "description": "הרמת דמבלים לצידים. תנועה בקרה.",
-    "mistakes": "אל תנדנד. תנועה חלקה.",
-    "link": "https://drive.google.com/file/d/FILE_ID_8/preview"
-  },
-  {
-    "id": 11,
-    "category": "בטן",
-    "name": "קראנץ'",
-    "description": "תרגיל לבטן. משוך את הברך לעבר הגב.",
-    "mistakes": "אל תמשוך בצוואר. התחזק מהבטן.",
-    "link": "https://drive.google.com/file/d/FILE_ID_9/preview"
-  },
-  {
-    "id": 12,
-    "category": "בטן",
-    "name": "פלנק",
-    "description": "שמור על עמדה ישרה. 30 שניות לפחות.",
-    "mistakes": "אל תרים את הישבן גבוה מדי.",
-    "link": "https://drive.google.com/file/d/FILE_ID_10/preview"
-  }
-]
+{
+  "חזה": [
+    {
+      "name": "בנץ' פרס",
+      "description": "בנץ' פרס מחזק את שרירי החזה, הכתפיים והיד האחורית. חשוב להוריד את המוט בצורה מבוקרת ולדחוף חזרה תוך שמירה על יציבות השכמות והגב.",
+      "mistakes": "לא להוריד את המוט מהר מדי. לא לגלגל את הגב או להרים את הישבן מהבנץ'.",
+      "link": "https://drive.google.com/file/d/18O6cEA0ZYHgwwwODXSYIz--7ukuau5n2/preview"
+    },
+    {
+      "name": "לחיצת דמבל",
+      "description": "תרגיל חזה עם דמבלים. שמור על יציבות הגב והכתפיים.",
+      "mistakes": "לא לרדת יותר מדי עמוק. שמור על יציבות.",
+      "link": "https://drive.google.com/file/d/FILE_ID_1/preview"
+    }
+  ],
+  "רגליים": [
+    {
+      "name": "סקוואט",
+      "description": "רגליים ברוחב כתפיים. גב ישר. ירידה מבוקרת.",
+      "mistakes": "לא להוריד את הישבן מתחת לקו הברכיים. לא לגלגל את הברכיים פנימה.",
+      "link": "https://drive.google.com/file/d/11ZBihF7d4UF-6DtZeeMm2TcvyP5QQL3Q/preview"
+    },
+    {
+      "name": "שכיבות רגליים",
+      "description": "תרגיל למרבצי הרגליים. עמוד ישר.",
+      "mistakes": "לא לכופף את הברכיים יותר מ-90 מעלות.",
+      "link": "https://drive.google.com/file/d/FILE_ID_2/preview"
+    }
+  ],
+  "גב": [
+    {
+      "name": "משיכה",
+      "description": "תרגיל גב עם משיכה אנכית. שמור על גב ישר.",
+      "mistakes": "אל תשנה את עמדת הגב.",
+      "link": "https://drive.google.com/file/d/FILE_ID_3/preview"
+    },
+    {
+      "name": "הטיות בורציה",
+      "description": "תרגיל גב עם משקולות. התייצבות וגב ישר.",
+      "mistakes": "שמור על גב ישר, אל תכופף.",
+      "link": "https://drive.google.com/file/d/FILE_ID_4/preview"
+    }
+  ],
+  "יד קדמית ואחורית": [
+    {
+      "name": "קול הביצפס",
+      "description": "הרמת דמבל לחיזוק הביצפס. תנועה מנוקבת.",
+      "mistakes": "אל תנדנד את הדמבל. בקרה מלאה בתנועה.",
+      "link": "https://drive.google.com/file/d/FILE_ID_5/preview"
+    },
+    {
+      "name": "הרחקת טריצפס",
+      "description": "תרגיל לטריצפס. משתרע מלא בחזרה.",
+      "mistakes": "השמור על הזרוע העליונה סטטית.",
+      "link": "https://drive.google.com/file/d/FILE_ID_6/preview"
+    }
+  ],
+  "כתפיים": [
+    {
+      "name": "בנץ' כתפיים",
+      "description": "הרמת משקולות מעל לראש. גב ישר.",
+      "mistakes": "לא להוריד את המשקולות מהר מדי.",
+      "link": "https://drive.google.com/file/d/FILE_ID_7/preview"
+    },
+    {
+      "name": "הרמות צדדיות",
+      "description": "הרמת דמבלים לצידים. תנועה בקרה.",
+      "mistakes": "אל תנדנד. תנועה חלקה.",
+      "link": "https://drive.google.com/file/d/FILE_ID_8/preview"
+    }
+  ],
+  "בטן": [
+    {
+      "name": "קראנץ'",
+      "description": "תרגיל לבטן. משוך את הברך לעבר הגב.",
+      "mistakes": "אל תמשוך בצוואר. התחזק מהבטן.",
+      "link": "https://drive.google.com/file/d/FILE_ID_9/preview"
+    },
+    {
+      "name": "פלנק",
+      "description": "שמור על עמדה ישרה. 30 שניות לפחות.",
+      "mistakes": "אל תרים את הישבן גבוה מדי.",
+      "link": "https://drive.google.com/file/d/FILE_ID_10/preview"
+    }
+  ]
+}

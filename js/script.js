@@ -11,6 +11,7 @@ const title = document.getElementById("exerciseTitle");
 const instructionsEl = document.getElementById("exerciseInstructions");
 const mistakesEl = document.getElementById("exerciseMistakes");
 const frame = document.getElementById("exerciseFrame");
+const exerciseDetails = document.getElementById("exerciseDetails");
 
 // elements for view switching
 const menu = document.getElementById('menu');
@@ -83,16 +84,20 @@ function onCardClick(exercise, category) {
     }
   });
 
+  // hide carousel titles
+  document.querySelectorAll('.carousel-title').forEach(title => title.style.display = 'none');
+
   // clear all active cards
   document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
   // activate the clicked card
   document.querySelector(`[data-exercise-id="${exercise.id}"]`).classList.add("active");
 
-  // update details panel
+  // update details panel and show it
   title.textContent = exercise.name;
   frame.src = exercise.link;
   setInstructions(exercise.description);
   setMistakes(exercise.mistakes);
+  exerciseDetails.classList.remove('hidden');
   
   // show the back-carousel button
   const backCarouselBtn = document.getElementById('backFromCarousel');
@@ -108,6 +113,12 @@ function showAllCarousels() {
     carousels[cat].classList.remove('active-carousel');
     carousels[cat].querySelectorAll('.card').forEach(c => c.classList.remove('active'));
   });
+  
+  // show carousel titles
+  document.querySelectorAll('.carousel-title').forEach(title => title.style.display = 'block');
+  
+  // hide the details panel
+  exerciseDetails.classList.add('hidden');
   
   // hide the back-carousel button
   const backCarouselBtn = document.getElementById('backFromCarousel');
@@ -154,18 +165,26 @@ fetch('data/exercises.json')
     if (!resp.ok) throw new Error('Network response was not ok: ' + resp.status);
     return resp.json();
   })
-  .then(data => {
-    if (!Array.isArray(data)) throw new Error('exercises.json must contain an array');
-    // basic normalization: ensure each item has id,name,description,link,category
-    const normalized = data.map((item, idx) => ({
-      id: item.id ?? idx + 1,
-      category: item.category ?? 'בטן',
-      name: item.name ?? `תרגיל ${idx + 1}`,
-      description: item.description ?? (Array.isArray(item.details) ? item.details : (item.details ? [item.details] : [])),
-      link: item.link ?? item.url ?? '',
-      mistakes: item.mistakes ?? item.errors ?? []
-    }));
-
+  .then(raw => {
+    // expect object with categories as keys
+    if (Array.isArray(raw)) {
+      throw new Error('old format detected; expected object keyed by category');
+    }
+    const normalized = [];
+    let nextId = 1;
+    for (const [category, items] of Object.entries(raw)) {
+      if (!Array.isArray(items)) continue;
+      items.forEach(item => {
+        normalized.push({
+          id: nextId++,
+          category,
+          name: item.name || `תרגיל ${nextId}`,
+          description: item.description || (Array.isArray(item.details) ? item.details : (item.details ? [item.details] : [])),
+          link: item.link || item.url || '',
+          mistakes: item.mistakes || item.errors || []
+        });
+      });
+    }
     renderExercisesByCategory(normalized);
   })
   .catch(err => {
