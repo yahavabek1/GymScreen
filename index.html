@@ -7,14 +7,24 @@
 </head>
 <body>
 
+  <!-- idle screen displayed when app is inactive -->
+  <div id="idleView" class="container">
+    <div class="idle-content">
+      <img id="olympiadLogo" src="images/OyimpiaLogo.jpeg" alt="Olympia">
+      <div class="idle-text">tap to start</div>
+    </div>
+  </div>
+
   <!-- main menu used to select which view to show -->
-  <div class="menu" id="menu">
+  
+  <div class="menu hidden" id="menu">
+    <div class="menu"></div>
     <button id="showExercises">תרגילים</button>
     <button id="showGymMap">מפת חדר כושר</button>
   </div>
 
   <!-- exercise carousel + details view (hidden until chosen) -->
-  <div id="exerciseView" class="container hidden">
+  <div id="exerciseView" class="container hidden menu">
     <button class="back-btn" id="backFromExercises">חזרה</button>
 
     <!-- back carousel button - hidden until a card is clicked -->

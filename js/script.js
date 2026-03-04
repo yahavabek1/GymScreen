@@ -15,6 +15,7 @@ const exerciseDetails = document.getElementById("exerciseDetails");
 
 // elements for view switching
 const menu = document.getElementById('menu');
+const idleView = document.getElementById('idleView');
 const showExercisesBtn = document.getElementById('showExercises');
 const showGymMapBtn = document.getElementById('showGymMap');
 const exerciseView = document.getElementById('exerciseView');
@@ -244,13 +245,14 @@ function showSection(section) {
   menu.classList.add('hidden');
   exerciseView.classList.add('hidden');
   mapView.classList.add('hidden');
+  idleView.classList.add('hidden');
 
   if (section === 'exercises') {
     exerciseView.classList.remove('hidden');
   } else if (section === 'map') {
     mapView.classList.remove('hidden');
-    // optional: set the iframe src if not already set or dynamic
-    //gymMapFrame.src = gymMapFrame.src || 'https://my.treedis.com/tour/547d8aec';
+  } else if (section === 'idle') {
+    idleView.classList.remove('hidden');
   } else {
     // default/unknown -> show main menu again
     menu.classList.remove('hidden');
@@ -268,5 +270,28 @@ backExercises.addEventListener('click', () => {
 backMap.addEventListener('click', () => showSection());
 backFromCarousel.addEventListener('click', () => showAllCarousels());
 
-// initial state: show the menu only
-showSection();
+// idle timer logic
+let idleTimer;
+function resetIdleTimer() {
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => showSection('idle'), 60_000);
+}
+
+// listen for interactions to reset timer
+['click', 'touchstart', 'keydown', 'mousemove'].forEach(evt => {
+  document.addEventListener(evt, () => {
+    if (idleView.classList.contains('hidden')) {
+      resetIdleTimer();
+    }
+  });
+});
+
+// tap on idle screen enters app
+idleView.addEventListener('click', () => {
+  showSection();
+  resetIdleTimer();
+});
+
+// initial state: show the idle screen
+showSection('idle');
+resetIdleTimer();

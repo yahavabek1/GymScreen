@@ -1,12 +1,13 @@
 body {
   margin: 0;
   /* logo background - replace logo.png with your actual logo path */
-  background: #e4dede url("images/OyimpiaLogo.jpeg") no-repeat center center;
-  background-size: contain;
+  background: #e4dede url("images/olimpiaLogoym.pneg") no-repeat center center;
+  background-size: cover;
   color: white;
   font-family: Arial, sans-serif;
   height: 100vh;
   display: flex;
+  overflow: hidden;
 }
 
 .container {
@@ -14,18 +15,71 @@ body {
   flex-direction: column;
   width: 100%;
   flex: 1;
+  overflow: hidden;
 }
 
 /* utility helpers */
 .hidden { display: none !important; }
 
+/* idle screen styling */
+.idle-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.idle-content img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* idle text overlay */
+.idle-text {
+  position: absolute;
+  font-size: 48px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 10;
+  animation: pulse 1.5s ease-in-out infinite;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
 /* main menu */
-.menu {
+ .menu {  position: relative;
+  z-index: 2;
+  height: 100vh;
+  width: 100vw;
   padding: 20px;
   display: flex;
   justify-content: center;
   gap: 16px;
-  background: #1a1a1a;
+  /* background image for menu (put the attached image at images/gym-bg.jpg) */
+  background-image: url("../images/Gym.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .menu button {
   padding: 12px 24px;
@@ -62,20 +116,34 @@ body {
 .carousel-title {
   padding: 12px 20px 0;
   margin: 0;
-  font-size: 24px;
+  font-size: 32px;
   color: #fff;
   text-align: right;
   direction: rtl;
 }
 
 .carousel {
+  position: fixed;
+  z-index: 1;
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  padding: 30px;
   overflow-x: auto;
-  background: #1a1a1a;
-  scroll-behavior: smooth;
 }
+
+/* subtle overlay so text and cards remain readable on the photo */
+.menu::before,
+.carousel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ensure children render above overlay */
+.menu > *, .carousel > * { position: relative; z-index: 2; }
 
 .carousel.hidden-carousel {
   display: none;
@@ -106,7 +174,7 @@ body {
 .details {
   flex: 1;
   padding: 28px;
-  overflow-y: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center; /* center iframe and textual content */
