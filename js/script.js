@@ -56,16 +56,33 @@ function renderExercisesByCategory(exercises) {
     const carousel = carousels[category];
 
     categoryExercises.forEach(ex => {
+
       const card = document.createElement("div");
       card.className = "card";
-      card.textContent = ex.name;
       card.dataset.exerciseId = ex.id;
+
+      const imageContainer = document.createElement("div");
+      imageContainer.className = "exercise-image";
+
+      const img = document.createElement("img");
+      img.src = ex.image || "images/Gym.jpeg"; // default image if not provided
+      console.log(`Loading image for exercise ${ex.name}: ${ex.image}`);
+      //img.alt = ex.name;
+
+      const name = document.createElement("div");
+      name.className = "exercise-name";
+      name.textContent = ex.name;
+
+      imageContainer.appendChild(img);
+      card.appendChild(imageContainer);
+      card.appendChild(name);
 
       card.addEventListener("click", () => {
         onCardClick(ex, category);
       });
 
       carousel.appendChild(card);
+
     });
   });
 }
@@ -182,7 +199,8 @@ fetch('data/exercises.json')
           name: item.name || `תרגיל ${nextId}`,
           description: item.description || (Array.isArray(item.details) ? item.details : (item.details ? [item.details] : [])),
           link: item.link || item.url || '',
-          mistakes: item.mistakes || item.errors || []
+          mistakes: item.mistakes || item.errors || [],
+          image: item.image || 'images/Gym.jpeg'
         });
       });
     }
