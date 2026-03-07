@@ -4,8 +4,7 @@
       "name": "בנץ' פרס",
       "description": "בנץ' פרס מחזק את שרירי החזה, הכתפיים והיד האחורית. חשוב להוריד את המוט בצורה מבוקרת ולדחוף חזרה תוך שמירה על יציבות השכמות והגב.",
       "mistakes": "לא להוריד את המוט מהר מדי. לא לגלגל את הגב או להרים את הישבן מהבנץ'.",
-      "link": "https://drive.google.com/file/d/18O6cEA0ZYHgwwwODXSYIz--7ukuau5n2/preview",
-      "image": "images/Gym.jpeg"
+      "link": "18O6cEA0ZYHgwwwODXSYIz--7ukuau5n2"
     },
     {
       "name": "לחיצת דמבל",
@@ -82,6 +81,20 @@
       "description": "שמור על עמדה ישרה. 30 שניות לפחות.",
       "mistakes": "אל תרים את הישבן גבוה מדי.",
       "link": "https://drive.google.com/file/d/FILE_ID_10/preview"
+    }
+  ],
+  "אירובי": [
+    {
+      "name": "אופניים",
+      "description": "ריצה בקצב קבוע. שמור על נשימה סדירה.",
+      "mistakes": "אל תמהר מדי. שמור על קצב נוח.",
+      "link": "1d3ws12D7UxyLy7ZEZ5ijBj9EwXZQndlF"
+    },
+    {
+      "name": "קפיצות במקום",
+      "description": "קפיצות עם הרמת ברכיים. שמור על קצב גבוה.",
+      "mistakes": "אל תתעייף מהר מדי. שמור על קצב אחיד.",
+      "link": "https://drive.google.com/file/d/FILE_ID_12/preview"
     }
   ]
 }

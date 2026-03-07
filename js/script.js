@@ -4,7 +4,8 @@ const carousels = {
   'גב': document.getElementById('carousel-3'),
   'יד קדמית ואחורית': document.getElementById('carousel-4'),
   'כתפיים': document.getElementById('carousel-5'),
-  'בטן': document.getElementById('carousel-6')
+  'בטן': document.getElementById('carousel-6'),
+  'אירובי': document.getElementById('carousel-7')
 };
 
 const title = document.getElementById("exerciseTitle");
@@ -65,9 +66,10 @@ function renderExercisesByCategory(exercises) {
       imageContainer.className = "exercise-image";
 
       const img = document.createElement("img");
-      img.src = ex.image || "images/Gym.jpeg"; // default image if not provided
-      console.log(`Loading image for exercise ${ex.name}: ${ex.image}`);
-      //img.alt = ex.name;
+      img.src = `https://drive.google.com/thumbnail?id=${ex.link}&sz=w600`;
+      img.onerror = () => {
+        img.src = "images/Gym.jpeg";} // default image if not provided
+      img.alt = ex.name;
 
       const name = document.createElement("div");
       name.className = "exercise-name";
@@ -112,7 +114,7 @@ function onCardClick(exercise, category) {
 
   // update details panel and show it
   title.textContent = exercise.name;
-  frame.src = exercise.link;
+  frame.src = `https://drive.google.com/file/d/${exercise.link}/preview`;
   setInstructions(exercise.description);
   setMistakes(exercise.mistakes);
   exerciseDetails.classList.remove('hidden');
@@ -202,7 +204,7 @@ fetch('data/exercises.json')
           mistakes: item.mistakes || item.errors || [],
           image: item.image || 'images/Gym.jpeg'
         });
-      });
+      });;
     }
     renderExercisesByCategory(normalized);
   })
