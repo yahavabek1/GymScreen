@@ -53,9 +53,10 @@ function renderExercisesByCategory(exercises) {
 
   // render each category carousel
   Object.keys(exercisesByCategory).forEach(category => {
+
     const categoryExercises = exercisesByCategory[category];
     const carousel = carousels[category];
-
+    
     categoryExercises.forEach(ex => {
 
       const card = document.createElement("div");
@@ -116,7 +117,7 @@ function onCardClick(exercise, category) {
   title.textContent = exercise.name;
   frame.src = `https://drive.google.com/file/d/${exercise.link}/preview`;
   setInstructions(exercise.description);
-  setMistakes(exercise.mistakes);
+  setMistakes(exercise.mistakes)
   exerciseDetails.classList.remove('hidden');
   
   // show the back-carousel button
