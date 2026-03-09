@@ -181,7 +181,7 @@ function hideAllCarousels() {
 
 // Try to load exercises from data/exercises.json.
 // Note: when opening via file:// the fetch may be blocked; serve via HTTP for correct behavior.
-fetch('../src/data/exercises.json')
+fetch('src/data/exercises.json')
   .then(resp => {
     if (!resp.ok) throw new Error('Network response was not ok: ' + resp.status);
     return resp.json();
@@ -203,7 +203,7 @@ fetch('../src/data/exercises.json')
           description: item.description || (Array.isArray(item.details) ? item.details : (item.details ? [item.details] : [])),
           link: item.link || item.url || '',
           mistakes: item.mistakes || item.errors || [],
-          image: item.image || 'images/Gym.jpeg'
+          image: item.image || 'src/assets/images/Gym.jpeg'
         });
       });;
     }
