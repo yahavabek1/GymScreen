@@ -69,7 +69,7 @@ function renderExercisesByCategory(exercises) {
       const img = document.createElement("img");
       img.src = `https://drive.google.com/thumbnail?id=${ex.link}&sz=w600`;
       img.onerror = () => {
-        img.src = "images/Gym.jpeg";} // default image if not provided
+        img.src = "src/assets/images/Gym.jpeg";} // default image if not provided
       img.alt = ex.name;
 
       const name = document.createElement("div");
@@ -181,7 +181,7 @@ function hideAllCarousels() {
 
 // Try to load exercises from data/exercises.json.
 // Note: when opening via file:// the fetch may be blocked; serve via HTTP for correct behavior.
-fetch('data/exercises.json')
+fetch('../src/data/exercises.json')
   .then(resp => {
     if (!resp.ok) throw new Error('Network response was not ok: ' + resp.status);
     return resp.json();

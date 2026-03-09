@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Gym Screen</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
 
   <!-- idle screen displayed when app is inactive -->
   <div id="idleView" class="container">
     <div class="idle-content">
-      <img id="olympiadLogo" src="images/OyimpiaLogo.jpeg" alt="Olympia">
+      <img id="olympiadLogo" src="src/assets/images/OyimpiaLogo.jpeg" alt="Olympia">
       <div class="idle-text">tap to start</div>
     </div>
   </div>
 
   <!-- main menu used to select which view to show -->
-  <div class="gym-background"></div>
+  <div class="light-bg"></div>
   <div class="menu hidden" id="menu">
     <button id="showExercises">חיפוש תרגילים</button>
     <button id="showGymMap">ניווט בחדר הכושר</button>
@@ -25,10 +25,15 @@
   <!-- exercise carousel + details view (hidden until chosen) -->
   <div id="exerciseView" class="container hidden exerciseView">
 
-    <button class="back-btn" id="backFromExercises">תפריט</button>
+    <button class="back-btn" id="backFromExercises">
+      <img src="src/assets/icons/back-btn.svg" alt="back"></img>
+    </button>
+
 
     <!-- back carousel button - hidden until a card is clicked -->
-    <button class="back-btn" id="backFromCarousel" style="display: none;">חזרה לכל הקטגוריות</button>
+    <button class="back-btn" id="backFromCarousel" style="display: none;">
+      <img src="src/assets/icons/back-btn.svg" alt="back"></img>
+    </button>
 
     <!-- 6 category carousels - all shown by default -->
     <h3 class="carousel-title">חזה</h3>
@@ -78,6 +83,6 @@
     <iframe id="gymMapFrame" title="מפת חדר כושר" src="https://my.treedis.com/tour/547d8aec"></iframe>
   </div>
 
-  <script src="js/script.js"></script>
+  <script src="src/js/script.js"></script>
 </body>
 </html>
