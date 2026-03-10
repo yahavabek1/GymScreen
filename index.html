@@ -10,29 +10,42 @@
   <!-- idle screen displayed when app is inactive -->
   <div id="idleView" class="container">
     <div class="idle-content">
-      <img id="olympiadLogo" src="src/assets/images/OyimpiaLogo.jpeg" alt="Olympia">
-      <div class="idle-text">tap to start</div>
+      <div class="light-bg"></div>
+      <img src="src/assets/icons/Olympia-icon.svg" alt="Gym Screen Logo" class="olympia-icon">
+      <div class="title text-xl">OLYMPIA</div>
+      <div class="subtitle text-md">peak performance await</div>
+      <div class="idle-text text-md">tap to start</div>
+      </div>
+      
     </div>
   </div>
 
   <!-- main menu used to select which view to show -->
   <div class="light-bg"></div>
   <div class="menu hidden" id="menu">
-    <button id="showExercises">חיפוש תרגילים</button>
-    <button id="showGymMap">ניווט בחדר הכושר</button>
+    <img src="src/assets/icons/Olympia-icon.svg" alt="Gym Screen Logo" class="olympia-icon">
+    <div class="title text-xl">OLYMPIA</div>
+    <button id="showExercises">
+     <div class="title text-lg"> חיפוש תרגילים</div>
+     <div class="subtitle text-md">מצא את התרגיל המושלם עבורך</div>
+    </button>
+    <button id="showGymMap">
+      <div class="title text-lg"> ניווט בחדר הכושר</div>
+      <div class="subtitle text-md">מפת תלת מימד איטנראקטיבית</div>
+    </button>
   </div>
 
   <!-- exercise carousel + details view (hidden until chosen) -->
   <div id="exerciseView" class="container hidden exerciseView">
 
     <button class="back-btn" id="backFromExercises">
-      <img src="src/assets/icons/back-btn.svg" alt="back"></img>
+      <img src="src/assets/icons/back-btn.svg" alt="back" class="back-icon"></img>
     </button>
 
 
     <!-- back carousel button - hidden until a card is clicked -->
     <button class="back-btn" id="backFromCarousel" style="display: none;">
-      <img src="src/assets/icons/back-btn.svg" alt="back"></img>
+      <img src="src/assets/icons/back-btn.svg" alt="back" class="back-icon"></img>
     </button>
 
     <!-- 6 category carousels - all shown by default -->
@@ -78,7 +91,9 @@
 
   <!-- gym map view (hidden until chosen) -->
   <div id="mapView" class="container hidden">
-    <button class="back-btn" id="backFromMap">חזרה</button>
+    <button class="back-btn" id="backFromMap">
+      <img src="src/assets/icons/back-btn.svg" alt="back" class="back-icon"></img>
+    </button>
     <!-- replace the src below with the desired map URL / embed code -->
     <iframe id="gymMapFrame" title="מפת חדר כושר" src="https://my.treedis.com/tour/547d8aec"></iframe>
   </div>

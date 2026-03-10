@@ -17,6 +17,18 @@ body {
   overflow: hidden;
 }
 
+.text-xl { font-size: clamp(32px, 10vw, 120px); }
+.text-lg { font-size: clamp(24px, 6vw, 80px); }
+.text-md { font-size: clamp(18px, 4vw, 40px); }
+.text-sm { font-size: clamp(14px, 3vw, 20px); }
+
+
+.olympia-icon {
+  height: 50px;
+  width: 50px;
+  z-index: 10;
+}
+
 /* utility helpers */
 .hidden { display: none !important; }
 
@@ -29,22 +41,21 @@ body {
   padding: 0;
   margin: 0;
   position: relative;
+  flex-direction: column;
+  gap: clamp(12px, 3vw, 24px);
 }
-.idle-content img {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  cursor: pointer;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
+.title{
+  font-family: space grotesk, sans-serif;
+  color: #000000;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+.subtitle {
+  color: #882920;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* idle text overlay */
 .idle-text {
-  position: absolute;
-  font-size: 48px;
   color: white;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -53,6 +64,7 @@ body {
   cursor: pointer;
   font-weight: bold;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  margin-top: clamp(120px, 10vw, 200px);
 }
 
 @keyframes pulse {
@@ -74,10 +86,11 @@ body {
   padding: 20px;
   display: flex;
   justify-content: center;
-  gap: 128px;
+  gap: clamp(60px, 10vw, 120px);
   align-items: center;
   overflow: auto;
   flex-wrap: wrap;
+  flex-direction: column;
  }
  .gym-background{
     position: fixed;
@@ -97,7 +110,7 @@ body {
   z-index: -1;
 }
 .menu button {
-  padding: 200px;
+  padding: 150px;
   font-family: space grotesk, sans-serif;
   font-size: 72px;
   border: none;
@@ -124,6 +137,7 @@ body {
 }
 /*exercise view */
 .exerciseView {
+  margin-top: 200px;
   padding: 20px;
   gap: 24px;
   position: relative;
@@ -149,7 +163,7 @@ body {
   top: 20px;
   left: 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 50px;
   background: #F4F4F4;
   cursor: pointer;
   transition: background 0.2s;
@@ -157,6 +171,11 @@ body {
 }
 .back-btn:hover {
   background: #444;
+}
+.back-icon {
+  width: 70px;
+  height: 50px;
+  fill: #333;
 }
 
 /* קרוסלה */
@@ -262,7 +281,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; /* center iframe and textual content */
-  background: #294954; /* slightly lighter than page background */
+  background: #7e9392; /* slightly lighter than page background */
   margin: 40px auto; /* separate from edges and center the card */
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.6);
