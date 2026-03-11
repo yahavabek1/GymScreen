@@ -13,7 +13,6 @@ const instructionsEl = document.getElementById("exerciseInstructions");
 const mistakesEl = document.getElementById("exerciseMistakes");
 const frame = document.getElementById("exerciseFrame");
 const exerciseDetails = document.getElementById("exerciseDetails");
-
 // elements for view switching
 const menu = document.getElementById('menu');
 const idleView = document.getElementById('idleView');
@@ -32,6 +31,11 @@ let currentId = null;
 let activeCarouselCategory = null;
 let exercisesByCategory = {};
 
+function getYoutubeId(url) {
+  const regExp = /(?:youtube\.com.*v=|youtu\.be\/)([^&?#]{11})/;
+  const match = url.match(regExp);
+  return match ? match[1] : null;
+}
 function renderExercisesByCategory(exercises) {
   // clear and organize exercises by category
   Object.keys(carousels).forEach(cat => {
@@ -67,7 +71,13 @@ function renderExercisesByCategory(exercises) {
       imageContainer.className = "exercise-image";
 
       const img = document.createElement("img");
-      img.src = `https://drive.google.com/thumbnail?id=${ex.link}&sz=w600`;
+      img.src = `https://img.youtube.com/vi/${getYoutubeId(ex.link)}/maxresdefault.jpg`;
+      img.onload = () => {
+        // אם זו תמונת placeholder של יוטיוב
+        if (img.naturalHeight <= 90) {
+          img.src = "./src/assets/images/Gym.jpeg";
+        }
+      };
       img.onerror = () => {
         img.src = "src/assets/images/Gym.jpeg";} // default image if not provided
       img.alt = ex.name;
@@ -112,10 +122,12 @@ function onCardClick(exercise, category) {
   document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
   // activate the clicked card
   document.querySelector(`[data-exercise-id="${exercise.id}"]`).classList.add("active");
-
+  const id = getYoutubeId(exercise.link);
   // update details panel and show it
   title.textContent = exercise.name;
-  frame.src = `https://drive.google.com/file/d/${exercise.link}/preview`;
+  frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&rel=0`;
+  frame.allow = "autoplay; fullscreen";
+  frame.frameBorder = "0";
   setInstructions(exercise.description);
   setMistakes(exercise.mistakes)
   exerciseDetails.classList.remove('hidden');
