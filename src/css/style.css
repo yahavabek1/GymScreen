@@ -164,6 +164,7 @@ body {
   z-index: -1;
 }
 .menu button {
+  position: relative;
   padding: 150px;
   font-family: space grotesk, sans-serif;
   font-size: 72px;
@@ -172,6 +173,7 @@ body {
   cursor: pointer;
   background: #F4F4F4;
   transition: background 0.2s;
+  overflow: hidden;
 }
 .menu button:hover {
   background: #e9e6e6;
@@ -181,10 +183,11 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
   z-index: -1;
-  stroke: #91a9cea5;
+  stroke: #91a9ce;
+  opacity: 0.15;
 }
 
 @media (max-width: 768px) {
