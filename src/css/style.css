@@ -7,6 +7,43 @@ body {
   min-height: 100vh;
   display: flex;
   overflow: auto;
+  justify-content: center;
+}
+
+.toolBar {
+  display: flex;
+  position: fixed;
+  background: #91a9ce;
+  height: 60px;
+  z-index: 10;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  justify-content: center;
+  bottom: 20px;
+  padding: 0 40px 0;
+  gap: 20px;
+}
+.nav-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+}
+.nav-btn.active .nav-icon {
+  stroke: #ffffff;
+}
+.nav-btn:hover .nav-icon {
+  stroke: #ffffff;
+  transition: stroke 0.3s;
+}
+.nav-icon .active{
+  stroke: #fff;
+}
+.nav-text {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #fff;
 }
 
 .container {
@@ -28,6 +65,11 @@ body {
   width: 50px;
   z-index: 10;
 }
+.menu .olympia-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
 
 /* utility helpers */
 .hidden { display: none !important; }
@@ -47,11 +89,9 @@ body {
 .title{
   font-family: space grotesk, sans-serif;
   color: #000000;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 .subtitle {
   color: #882920;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* idle text overlay */

@@ -16,11 +16,14 @@ const exerciseDetails = document.getElementById("exerciseDetails");
 // elements for view switching
 const menu = document.getElementById('menu');
 const idleView = document.getElementById('idleView');
-const showExercisesBtn = document.getElementById('showExercises');
-const showGymMapBtn = document.getElementById('showGymMap');
+const navShowExercises = document.getElementById('navShowExercises');
+const navShowGymMap = document.getElementById('navShowGymMap');
+const menuShowExercises = document.getElementById('menuShowExercises');
+const menuShowGymMap = document.getElementById('menuShowGymMap');
 const exerciseView = document.getElementById('exerciseView');
 const mapView = document.getElementById('mapView');
 const gymMapFrame = document.getElementById('gymMapFrame');
+const navigation = document.getElementById('navigation');
 
 // back buttons inside the views
 const backExercises = document.getElementById('backFromExercises');
@@ -279,6 +282,7 @@ function showSection(section) {
   exerciseView.classList.add('hidden');
   mapView.classList.add('hidden');
   idleView.classList.add('hidden');
+  navigation.classList.remove('hidden');
 
   if (section === 'exercises') {
     exerciseView.classList.remove('hidden');
@@ -286,6 +290,7 @@ function showSection(section) {
     mapView.classList.remove('hidden');
   } else if (section === 'idle') {
     idleView.classList.remove('hidden');
+    navigation.classList.add('hidden');
   } else {
     // default/unknown -> show main menu again
     menu.classList.remove('hidden');
@@ -293,8 +298,20 @@ function showSection(section) {
 }
 
 // wire up menu buttons
-showExercisesBtn.addEventListener('click', () => showSection('exercises'));
-showGymMapBtn.addEventListener('click', () => showSection('map'));
+navShowExercises.addEventListener('click', () => showSection('exercises'));
+navShowGymMap.addEventListener('click', () => showSection('map'));
+menuShowExercises.addEventListener('click', () => showSection('exercises'));
+menuShowGymMap.addEventListener('click', () => showSection('map'));
+
+document.querySelectorAll(".nav-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    // הסרה של כל ה-active
+    document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
+    
+    // הוספה ל-button שנלחץ
+    btn.classList.add("active");
+  });
+});
 
 backExercises.addEventListener('click', () => {
   hideAllCarousels();

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
+   
 
   <!-- idle screen displayed when app is inactive -->
   <div id="idleView" class="container">
@@ -23,17 +24,29 @@
 
   <!-- main menu used to select which view to show -->
   <div class="light-bg"></div>
+  <div class="toolBar hidden" id="navigation">
+    <button id="navShowExercises" class="nav-btn">
+      <i data-lucide="dumbbell" class="nav-icon"></i>
+      <div class="nav-text">תרגילים</div>
+    </button>
+    <button id="navShowGymMap" class="nav-btn">
+      <i data-lucide="map-pin" class="nav-icon"></i>
+      <div class="nav-text">מפת כושר</div>
+    </button>
+
+  </div>
   <div class="menu hidden" id="menu">
     <img src="src/assets/icons/Olympia-icon.svg" alt="Gym Screen Logo" class="olympia-icon">
     <div class="title text-xl">OLYMPIA</div>
-    <button id="showExercises">
-     <div class="title text-lg"> חיפוש תרגילים</div>
+    <button id="menuShowExercises">
+     <div class="title text-lg"> מאגר תרגילים</div>
      <div class="subtitle text-md">מצא את התרגיל המושלם עבורך</div>
     </button>
-    <button id="showGymMap">
-      <div class="title text-lg"> ניווט בחדר הכושר</div>
-      <div class="subtitle text-md">מפת תלת מימד איטראקטיבית</div>
+    <button id="menuShowGymMap">
+      <div class="title text-lg"> מפת חדר כושר</div>
+      <div class="subtitle text-md">נווט במכון ומצא את המתקן שלך</div>
     </button>
+    
   </div>
 
   <!-- exercise carousel + details view (hidden until chosen) -->
@@ -98,7 +111,11 @@
     <!-- replace the src below with the desired map URL / embed code -->
     <iframe id="gymMapFrame" title="מפת חדר כושר" src="https://my.treedis.com/tour/547d8aec"></iframe>
   </div>
-
+  
   <script src="src/js/script.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>
