@@ -8,6 +8,7 @@ body {
   display: flex;
   overflow: auto;
   justify-content: center;
+  padding-bottom: 40px;
 }
 
 .toolBar {
@@ -17,9 +18,8 @@ body {
   height: 60px;
   z-index: 10;
   border-radius: 16px;
-  margin-bottom: 10px;
   justify-content: center;
-  bottom: 20px;
+  bottom: 10px;
   padding: 0 40px 0;
   gap: 20px;
 }
@@ -87,10 +87,11 @@ body {
   gap: clamp(12px, 3vw, 24px);
 }
 .title{
-  font-family: space grotesk, sans-serif;
+  font-family: 'Times New Roman', Times, serif, sans-serif;
   color: #000000;
 }
 .subtitle {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #882920;
 }
 
@@ -160,7 +161,17 @@ body {
   transition: background 0.2s;
 }
 .menu button:hover {
-  background: #444;
+  background: #e9e6e6;
+}
+.menu button .nav-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  z-index: -1;
+  stroke: #91a9cea5;
 }
 
 @media (max-width: 768px) {

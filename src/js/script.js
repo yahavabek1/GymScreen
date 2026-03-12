@@ -16,6 +16,7 @@ const exerciseDetails = document.getElementById("exerciseDetails");
 // elements for view switching
 const menu = document.getElementById('menu');
 const idleView = document.getElementById('idleView');
+const navShowHome = document.getElementById('navShowHome');
 const navShowExercises = document.getElementById('navShowExercises');
 const navShowGymMap = document.getElementById('navShowGymMap');
 const menuShowExercises = document.getElementById('menuShowExercises');
@@ -283,35 +284,31 @@ function showSection(section) {
   mapView.classList.add('hidden');
   idleView.classList.add('hidden');
   navigation.classList.remove('hidden');
+  document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
 
   if (section === 'exercises') {
     exerciseView.classList.remove('hidden');
+    navShowExercises.classList.add('active');
   } else if (section === 'map') {
     mapView.classList.remove('hidden');
+    navShowGymMap.classList.add('active');
   } else if (section === 'idle') {
     idleView.classList.remove('hidden');
     navigation.classList.add('hidden');
   } else {
     // default/unknown -> show main menu again
     menu.classList.remove('hidden');
+    navShowHome.classList.add('active');
   }
 }
 
 // wire up menu buttons
 navShowExercises.addEventListener('click', () => showSection('exercises'));
 navShowGymMap.addEventListener('click', () => showSection('map'));
+navShowHome.addEventListener('click', () => showSection('home'));
 menuShowExercises.addEventListener('click', () => showSection('exercises'));
 menuShowGymMap.addEventListener('click', () => showSection('map'));
 
-document.querySelectorAll(".nav-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    // הסרה של כל ה-active
-    document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
-    
-    // הוספה ל-button שנלחץ
-    btn.classList.add("active");
-  });
-});
 
 backExercises.addEventListener('click', () => {
   hideAllCarousels();
