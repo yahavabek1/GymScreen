@@ -25,15 +25,13 @@ const exerciseView = document.getElementById('exerciseView');
 const mapView = document.getElementById('mapView');
 const gymMapFrame = document.getElementById('gymMapFrame');
 const navigation = document.getElementById('navigation');
-
+const categorySelection = document.getElementById('categorySelection');
 // back buttons inside the views
-const backExercises = document.getElementById('backFromExercises');
-const backMap = document.getElementById('backFromMap');
-const backFromCarousel = document.getElementById('backFromCarousel');
 
 let currentId = null;
 let activeCarouselCategory = null;
 let exercisesByCategory = {};
+let currentView = 'idle'; // 'idle', 'home', 'categorySelection', 'exerciseView', 'map'
 
 function getYoutubeId(url) {
   const regExp = /(?:youtube\.com.*v=|youtu\.be\/)([^&?#]{11})/;
@@ -66,6 +64,8 @@ function renderExercisesByCategory(exercises) {
     const carousel = carousels[category];
     
     categoryExercises.forEach(ex => {
+      const cardContainer = document.createElement("div");
+      cardContainer.className = "card-container";
 
       const card = document.createElement("div");
       card.className = "card";
@@ -90,18 +90,48 @@ function renderExercisesByCategory(exercises) {
       name.className = "exercise-name";
       name.textContent = ex.name;
 
+      const icon = document.createElement("i");
+      icon.className = "exercise-icon";
+      icon.setAttribute("data-lucide", "info");
+      
+
       imageContainer.appendChild(img);
       card.appendChild(imageContainer);
-      card.appendChild(name);
+      cardContainer.appendChild(card);
+      cardContainer.appendChild(name);
+      cardContainer.appendChild(icon);
 
-      card.addEventListener("click", () => {
+      cardContainer.addEventListener("click", () => {
         onCardClick(ex, category);
       });
 
-      carousel.appendChild(card);
+      carousel.appendChild(cardContainer);
 
     });
   });
+}
+
+function onCategoryButtonClick(category) {
+  showSection('exerciseView');
+  hideAllCarousels();
+  showCarousel(category);
+}
+
+function handleBack() {
+    if (currentId) {
+      currentId = null;
+      document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
+      exerciseDetails.classList.add('hidden');
+      showCarousel(activeCarouselCategory); // חוזר מרמת תרגיל
+    return;
+  }
+    if (activeCarouselCategory) {
+    activeCarouselCategory = null;
+    showSection('categorySelection'); // חוזר מקטגוריה  
+    return;
+  }
+  showSection(); // חוזר לתפריט הראשי 
+  
 }
 
 function onCardClick(exercise, category) {
@@ -109,15 +139,7 @@ function onCardClick(exercise, category) {
   currentId = exercise.id;
 
   // hide all other carousels, show only this one
-  Object.keys(carousels).forEach(cat => {
-    if (cat === category) {
-      carousels[cat].classList.remove('hidden-carousel');
-      carousels[cat].classList.add('active-carousel');
-    } else {
-      carousels[cat].classList.add('hidden-carousel');
-      carousels[cat].classList.remove('active-carousel');
-    }
-  });
+  hideAllCarousels();
 
   // hide carousel titles
   document.querySelectorAll('.carousel-title').forEach(title => title.style.display = 'none');
@@ -133,36 +155,23 @@ function onCardClick(exercise, category) {
   frame.allow = "autoplay; fullscreen";
   frame.frameBorder = "0";
   setInstructions(exercise.description);
-  setMistakes(exercise.mistakes)
+  setMistakes(exercise.mistakes);
   exerciseDetails.classList.remove('hidden');
   
   // show the back-carousel button
-  const backCarouselBtn = document.getElementById('backFromCarousel');
-  if (backCarouselBtn) {
-    backCarouselBtn.style.display = 'block';
   }
-}
 
-function showAllCarousels() {
+function showAllCarousels(){
   // show all carousels
   Object.keys(carousels).forEach(cat => {
     carousels[cat].classList.remove('hidden-carousel');
     carousels[cat].classList.remove('active-carousel');
     carousels[cat].querySelectorAll('.card').forEach(c => c.classList.remove('active'));
   });
-  
   // show carousel titles
   document.querySelectorAll('.carousel-title').forEach(title => title.style.display = 'block');
-  
   // hide the details panel
   exerciseDetails.classList.add('hidden');
-  
-  // hide the back-carousel button
-  const backCarouselBtn = document.getElementById('backFromCarousel');
-  if (backCarouselBtn) {
-    backCarouselBtn.style.display = 'none';
-  }
-  
   currentId = null;
   activeCarouselCategory = null;
   
@@ -187,11 +196,11 @@ function showCarousel(category) {
 
 function hideAllCarousels() {
   Object.keys(carousels).forEach(cat => {
+    carousels[cat].classList.add('hidden-carousel');
+    document.querySelectorAll('.carousel-title').forEach(title => title.style.display = 'none');
     carousels[cat].classList.remove('active-carousel');
     carousels[cat].querySelectorAll('.card').forEach(c => c.classList.remove('active'));
   });
-  activeCarouselCategory = null;
-  currentId = null;
 }
 
 
@@ -224,6 +233,7 @@ fetch('src/data/exercises.json')
       });;
     }
     renderExercisesByCategory(normalized);
+    lucide.createIcons();
   })
   .catch(err => {
     console.error('Failed to load data/exercises.json:', err);
@@ -234,6 +244,7 @@ fetch('src/data/exercises.json')
       { id: 3, category: 'רגליים', name: 'סקוואט', description: 'תרגיל רגליים בסיסי', link: 'https://drive.google.com/file/d/FILE_ID_3/preview', mistakes: [] }
     ];
     renderExercisesByCategory(fallback);
+    lucide.createIcons(); // ensure icons are created even with fallback data
   });
 
 // --- helper functions for rendering instruction & mistakes content ---
@@ -284,10 +295,11 @@ function showSection(section) {
   mapView.classList.add('hidden');
   idleView.classList.add('hidden');
   navigation.classList.remove('hidden');
+  categorySelection.classList.add('hidden');
   document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
 
-  if (section === 'exercises') {
-    exerciseView.classList.remove('hidden');
+  if (section === 'categorySelection') {
+    categorySelection.classList.remove('hidden');
     navShowExercises.classList.add('active');
   } else if (section === 'map') {
     mapView.classList.remove('hidden');
@@ -295,27 +307,36 @@ function showSection(section) {
   } else if (section === 'idle') {
     idleView.classList.remove('hidden');
     navigation.classList.add('hidden');
-  } else {
+  } else if(section === 'exerciseView') {
+    exerciseView.classList.remove('hidden');
+    navShowExercises.classList.add('active');
+  }
+  else {
     // default/unknown -> show main menu again
     menu.classList.remove('hidden');
     navShowHome.classList.add('active');
   }
+  currentView = section;
 }
 
 // wire up menu buttons
-navShowExercises.addEventListener('click', () => showSection('exercises'));
+navShowExercises.addEventListener('click', () => showSection('categorySelection'));
 navShowGymMap.addEventListener('click', () => showSection('map'));
-navShowHome.addEventListener('click', () => showSection('home'));
-menuShowExercises.addEventListener('click', () => showSection('exercises'));
+navShowHome.addEventListener('click', () => showSection());
+menuShowExercises.addEventListener('click', () => showSection('categorySelection'));
 menuShowGymMap.addEventListener('click', () => showSection('map'));
 
-
-backExercises.addEventListener('click', () => {
-  hideAllCarousels();
-  showSection();
+document.querySelectorAll('#categorySelection button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const category = btn.dataset.category;
+    onCategoryButtonClick(category);
+  });
 });
-backMap.addEventListener('click', () => showSection());
-backFromCarousel.addEventListener('click', () => showAllCarousels());
+
+// back buttons event listeners
+document.querySelectorAll('.back-btn').forEach(btn => {
+  btn.addEventListener('click', handleBack);
+});
 
 // idle timer logic
 let idleTimer;

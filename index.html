@@ -43,32 +43,40 @@
   <div class="menu hidden" id="menu">
     <img src="src/assets/icons/Olympia-icon.svg" alt="Gym Screen Logo" class="olympia-icon">
     <div class="title text-xl">OLYMPIA</div>
-    <button id="menuShowExercises">
-      <i data-lucide="dumbbell" class="nav-icon"></i>
-     <div class="title text-lg"> מאגר תרגילים</div>
-     <div class="subtitle text-md">מצא את התרגיל המושלם עבורך</div>
-    </button>
-    <button id="menuShowGymMap">
-      <i data-lucide="map-pin" class="nav-icon"></i>
-      <div class="title text-lg"> מפת חדר כושר</div>
-      <div class="subtitle text-md">נווט במכון ומצא את המתקן שלך</div>
-    </button>
-    
+      <button id="menuShowExercises">
+        <i data-lucide="dumbbell" class="nav-icon"></i>
+      <div class="title text-lg"> מאגר תרגילים</div>
+      <div class="subtitle text-md">מצא את התרגיל המושלם עבורך</div>
+      </button>
+      <button id="menuShowGymMap">
+        <i data-lucide="map-pin" class="nav-icon"></i>
+        <div class="title text-lg"> מפת חדר כושר</div>
+        <div class="subtitle text-md">נווט במכון ומצא את המתקן שלך</div>
+      </button>
+    </div>
   </div>
-
+  <div class="selection hidden" id="categorySelection">
+      <h2 class="selection-title">בחר קטגוריה</h2>
+      <button  data-category="חזה">חזה</button>
+      <button  data-category="רגליים">רגליים</button>
+      <button  data-category="גב">גב</button>
+      <button  data-category="יד קדמית ואחורית">יד קדמית ואחורית</button>
+      <button  data-category="כתפיים">כתפיים</button>
+      <button  data-category="בטן">בטן</button>
+      <button  data-category="אירובי">אירובי</button>
+  </div>
   <!-- exercise carousel + details view (hidden until chosen) -->
   <div id="exerciseView" class="container hidden exerciseView">
-
-    <button class="back-btn" id="backFromExercises">
+    <button class="back-btn" id="backBtn">
       <img src="src/assets/icons/back-btn.svg" alt="back" class="back-icon"></img>
     </button>
 
 
     <!-- back carousel button - hidden until a card is clicked -->
-    <button class="back-btn" id="backFromCarousel" style="display: none;">
+    <button class="back-btn"  style="display: none;">
       <img src="src/assets/icons/back-btn.svg" alt="back" class="back-icon"></img>
     </button>
-
+    
     <!-- 6 category carousels - all shown by default -->
     <h3 class="carousel-title">חזה</h3>
     <div class="carousel" id="carousel-1" data-category="חזה"></div>
@@ -112,15 +120,15 @@
 
   <!-- gym map view (hidden until chosen) -->
   <div id="mapView" class="container hidden">
-    <button class="back-btn" id="backFromMap">
+    <button class="back-btn">
       <img src="src/assets/icons/back-btn.svg" alt="back" class="back-icon"></img>
     </button>
     <!-- replace the src below with the desired map URL / embed code -->
     <iframe id="gymMapFrame" title="מפת חדר כושר" src="https://my.treedis.com/tour/547d8aec"></iframe>
   </div>
   
-  <script src="src/js/script.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="src/js/script.js"></script>
   <script>
     lucide.createIcons();
   </script>
